@@ -66,5 +66,5 @@ observeEvent(input$listaOSC, {
 
 The figure below illustrates some of the functionalities the app presents in its present version.
 
-->![CSOs Map Demo](./figures/appDemo.png)<-
+![CSOs Map Demo](./figures/appDemo.png)
 
