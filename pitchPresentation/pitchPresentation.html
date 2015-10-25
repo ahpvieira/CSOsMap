@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Developing Data Products Project</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Developing Data Products Project">
+  <meta name="author" content="Andre Vieira">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Developing Data Products Project</h1>
+    <h2>CSOs Map Pitch Presentation</h2>
+    <p>Andre Vieira<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>The CSOs Map</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><p>The CSOs Map presents some data on the civil society organizations (CSOs) in the state of Rio de Janeiro, Brazil.</p></li>
+<li><p>The data was extracted from databases produced by the Ministry of Labor and Employment and the Ministry of Planning, Budget and Management (MPOG) of Brazil.</p></li>
+<li><p>The app allows the user to find the civil society organizations with partnerships with the federal government in the state of Rio de Janeiro.</p></li>
+<li><p>The CSOs Map is still under development so its future releases should present new features.</p></li>
+<li><p>The code from the <a href="shiny.rstudio.com/gallery/superzip-example.html">Superzip example app</a> was the major reference for this app.</p></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Why map civil society organizations?</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Little is known about the civil society organizations in Brazil and the relationship between them and the Brazilian federal government. Still, the partnership between them are critical to the country&#39;s development.</p>
+
+<p>The main mission of the Map is to provide data on civil organizations in Brazil and strengthen their rule in the Brazilian democracy.</p>
+
+<p>The SCOs Map should become a reference tool for consultation on data relating to the civil society organizations in Brazil.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>How does the Map work</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The app allows the user to choose the state, the city and/or the organization that interests him/her. In doing so, the map will automatically zoom in on the selected location or civil organization. The app code geolocates for the user any organization with partnerships with the federal government in the state of Rio de Janeiro.</p>
+
+<pre><code class="r">selectInput(&quot;listaOSC&quot;, label = &quot;Organization&quot;, 
+            choices = c(&quot;&quot;, levels(factor(coordrj$razao_social))), 
+            selected = &quot;&quot;)
+</code></pre>
+
+<pre><code class="r">observeEvent(input$listaOSC, {
+        coordrj &lt;- subset(coordrj, coordrj$razao_social == input$listaOSC)
+        if(nrow(coordrj)==0){
+            leafletProxy(&quot;map&quot;)
+        } else {
+            leafletProxy(mapId = &quot;map&quot;) %&gt;% 
+                setView(...) %&gt;%
+                addCircleMarkers(...)
+        }
+    })
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Exploring some functionalities</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The figure below illustrates some of the functionalities the app presents in its present version.</p>
+
+<p>-&gt;<img src="./figures/appDemo.png" alt="CSOs Map Demo">&lt;-</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='The CSOs Map'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Why map civil society organizations?'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='How does the Map work'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Exploring some functionalities'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
