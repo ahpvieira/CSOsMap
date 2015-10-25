@@ -1,0 +1,11 @@
+## Civil Society Organizations Map - Rio de Janeiro - Brazil
+
+This Shiny App presents data on the civil society organizations (CSOs) in the state of Rio de Janeiro, Brazil, extracted from the [Annual List of Social Information - Relação Anual de Informações Sociais (RAIS)](http://www3.mte.gov.br/rais/) database of the Ministry of Labor and Employment and from the Financial Funding Contracts and Partnerships Management System - Siconv database of the Ministry of Planning, Budget and Management (MPOG) of Brazil. This app allows the user to find the civil society organizations with partnerships with the federal government in the state of Rio de Janeiro.
+
+This app is still under development so its future releases should present new features.
+
+The data can be downloaded from: [https://github.com/ahpvieira/SCOsMap](https://github.com/ahpvieira/SCOsMap)
+
+The code from the [Superzip example](http://shiny.rstudio.com/gallery/superzip-example.html) app was the major reference for this app.
+
+
